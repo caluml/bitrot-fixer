@@ -1,5 +1,7 @@
 package bitrotfixer;
 
+import bitrotfixer.impl.Crc32CChecksummer;
+import bitrotfixer.impl.Crc32Checksummer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +12,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MainTest {
+
+	@Test
+	public void Can_correct_flipped_bit_against_CRC32_checksum() throws Exception {
+		// Given
+		String validChecksum = "941242298";
+		File outputFile = new File("src/test/resources/test-image.jpeg-fixed");
+		outputFile.delete();
+
+		// When
+		Main.main(new String[]{"src/test/resources/test-image.jpeg", "crc32:" + validChecksum});
+
+		// Then
+		assertThat(outputFile).exists();
+		assertThat(new Crc32Checksummer().checksum(Files.readAllBytes(outputFile.toPath()))).isEqualTo(validChecksum);
+	}
+
+	@Test
+	public void Can_correct_flipped_bit_against_CRC32C_checksum() throws Exception {
+		// Given
+		String validChecksum = "2051673005";
+		File outputFile = new File("src/test/resources/test-image.jpeg-fixed");
+		outputFile.delete();
+
+		// When
+		Main.main(new String[]{"src/test/resources/test-image.jpeg", "crc32c:" + validChecksum});
+
+		// Then
+		assertThat(outputFile).exists();
+		assertThat(new Crc32CChecksummer().checksum(Files.readAllBytes(outputFile.toPath()))).isEqualTo(validChecksum);
+	}
 
 	@Test
 	public void Can_correct_flipped_bit_against_MD5_checksum() throws Exception {

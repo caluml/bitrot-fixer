@@ -40,6 +40,10 @@ public class Main {
 	private static BitFixer getBitFixer(
 		String algorithm) {
 		switch (algorithm) {
+			case "crc32":
+				return new BitFixer(new Crc32Checksummer());
+			case "crc32c":
+				return new BitFixer(new Crc32CChecksummer());
 			case "md5":
 				return new BitFixer(new Md5Checksummer());
 			case "sha1":

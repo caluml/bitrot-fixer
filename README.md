@@ -12,6 +12,8 @@ java -jar target/bitrot-fixer-*.jar /path/to/file md5:bc838b7c7e59458afd78c94db4
 
 #### Currently supported checksum algorithms:
 
+* crc32
+* crc32c
 * md5
 * sha1
 * sha256
