@@ -31,8 +31,9 @@ public class BitFixer {
 			}
 			flipBit(data, i); // Flip it back
 		}
-		System.out.println("Didn't find a single bit flip that would match the given checksum.");
+		System.out.println("Didn't find a single bit flip that would match the given checksum after " + (System.currentTimeMillis() - start) + " ms");
 		if (numBits == 1) {
+			System.out.println("Set the numbits parameter to 2 to try combinations of two flipped bits");
 			return false;
 		}
 
@@ -51,7 +52,7 @@ public class BitFixer {
 			flipBit(data, i); // Flip first bit back
 		}
 
-		System.out.println("Didn't find two bit flips that would match the given checksum.");
+		System.out.println("Didn't find two bit flips that would match the given checksum after " + (System.currentTimeMillis() - start) + " ms");
 		return false;
 	}
 

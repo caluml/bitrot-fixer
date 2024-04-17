@@ -42,3 +42,5 @@ build/
 ### Avoid accidental commits
 /src/test/resources/test-image.jpeg-fixed
 /src/test/resources/test-image.jpeg-orig
+/src/test/resources/two-bits-fixed
+/src/test/resources/two-bits-orig
