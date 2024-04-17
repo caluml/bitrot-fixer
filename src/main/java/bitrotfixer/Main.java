@@ -10,8 +10,8 @@ public class Main {
 
 	public static void main(
 		String[] args) throws Exception {
-		if (args.length != 2) {
-			System.err.println("Usage: java -jar target/bitrot-fixer-*.jar <file> <algorithm:expectedchecksum>");
+		if (args.length < 2) {
+			System.err.println("Usage: java -jar target/bitrot-fixer-*.jar <file> <algorithm:expectedchecksum> [numbits]");
 			System.err.println("E.g.   java -jar target/bitrot-fixer-*.jar /tmp/broken.file md5:3a34f6b9e8a09f11bbc70aa46603dc63");
 			System.exit(1);
 		}
@@ -21,6 +21,11 @@ public class Main {
 			System.exit(2);
 		}
 
+		int numBits = 1;
+		if (args.length == 3) {
+			numBits = Integer.parseInt(args[2]);
+		}
+
 		String[] checksumArgs = args[1].split(":");
 		String algorithm = checksumArgs[0];
 		String expectedChecksum = checksumArgs[1];
@@ -28,8 +33,9 @@ public class Main {
 		System.out.println("Checking " + file + " for " + algorithm + ":" + expectedChecksum);
 
 		byte[] data = Files.readAllBytes(file.toPath());
-		int corruptBit = bitFixer.fixBit(data, expectedChecksum);
-		if (corruptBit > -1) {
+
+		boolean fixed = bitFixer.fixBit(data, expectedChecksum, numBits);
+		if (fixed) {
 			// data[] is already corrected
 			Files.write(new File(file.getAbsolutePath() + "-fixed").toPath(), data);
 		} else {
