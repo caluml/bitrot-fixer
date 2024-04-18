@@ -34,12 +34,11 @@ public class Main {
 
 		byte[] data = Files.readAllBytes(file.toPath());
 
-		boolean fixed = bitFixer.fixBit(data, expectedChecksum, numBits);
-		if (fixed) {
-			// data[] is already corrected
-			Files.write(new File(file.getAbsolutePath() + "-fixed").toPath(), data);
+		byte[] fixed = bitFixer.fixBit(data, expectedChecksum, numBits);
+		if (fixed != null) {
+			Files.write(new File(file.getAbsolutePath() + "-fixed").toPath(), fixed);
 		} else {
-			System.out.println("Unable to find a single bit corruption that resolves to " + args[1]);
+			System.out.println("Unable to fix corruption that resolves to " + args[1]);
 		}
 	}
 
