@@ -18,7 +18,7 @@ java -jar target/bitrot-fixer-1.0-SNAPSHOT.jar src/test/resources/test-image-two
 ```
 
 #### Native
-To build a native image, download the Graal JDK
+To build a native Linux image, download the [Graal](https://www.graalvm.org/) JDK
 ```bash
 JAVA_HOME=/path/to/graaljdk ./mvnw -DskipTests -Pnative clean package
 target/bitrot-fixer src/test/resources/test-image-two-flips.jpeg md5:8a673261e62cdfc9072b0dc3ee4d21eb 2
