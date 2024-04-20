@@ -39,4 +39,4 @@ target/bitrot-fixer src/test/resources/test-image-two-flips.jpeg md5:8a673261e62
 
 #### Current limitations
 
-* Trying two bit-flips takes a very long time on large files, due to all the possible combinations (<filesize>²)
+* Trying two bit-flips takes a very long time on large files, due to all the possible combinations (&lt;filesize>²)
