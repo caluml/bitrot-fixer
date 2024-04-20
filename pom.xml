@@ -76,7 +76,7 @@
                             <execution>
                                 <id>build-native</id>
                                 <goals>
-                                    <goal>build</goal>
+                                    <goal>compile-no-fork</goal>
                                 </goals>
                                 <phase>package</phase>
                             </execution>
@@ -88,6 +88,12 @@
                                 <phase>test</phase>
                             </execution>
                         </executions>
+                        <configuration>
+                            <fallback>false</fallback>
+                            <buildArgs>
+                                <arg>-march=native --strict-image-heap</arg>
+                            </buildArgs>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
