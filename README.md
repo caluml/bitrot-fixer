@@ -13,8 +13,15 @@ Optional: 1 or 2 flipped bits to try<br>
 ### Usage
 
 ```bash
-./mvn clean package
-java -jar target/bitrot-fixer-*.jar /path/to/file md5:bc838b7c7e59458afd78c94db41203f5 1
+./mvnw clean package
+java -jar target/bitrot-fixer-1.0-SNAPSHOT.jar src/test/resources/test-image.jpeg md5:0084e07dd2b96c17e7b1315929c95ddb 1
+```
+
+#### Native
+To build a native image, download the Graal JDK
+```bash
+JAVA_HOME=/path/to/graaljdk ./mvnw -DskipTests -Pnative clean package
+target/bitrot-fixer src/test/resources/test-image.jpeg md5:0084e07dd2b96c17e7b1315929c95ddb 1
 ```
 
 #### Currently supported checksum algorithms:
