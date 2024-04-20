@@ -2,7 +2,8 @@
 
 If you have a file (jpeg, mp3, etc) which has become corrupted by [bit rot](https://en.wikipedia.org/wiki/Data_rot), and
 you know what the correct checksum should be, this CLI project will try and flip every bit in the file until it finds
-the one that is incorrect.
+the one that is incorrect.<br>
+The fixed file is saved as <original-filename>-fixed
 
 Runs the checksum operations across all available cores for speed improvements
 
