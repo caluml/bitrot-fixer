@@ -9,6 +9,7 @@ import java.nio.file.Files;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class TwoFlippedBitsTest {
 
 	private static final String SMALL_INPUT_FILE = "src/test/resources/two-bits";

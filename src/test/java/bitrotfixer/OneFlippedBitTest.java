@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class OneFlippedBitTest {
 
 	private static final String INPUT_FILE = "src/test/resources/test-image.jpeg";
