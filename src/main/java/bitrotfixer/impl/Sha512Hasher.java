@@ -1,9 +1,9 @@
 package bitrotfixer.impl;
 
-import bitrotfixer.Checksummer;
+import bitrotfixer.Hasher;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class Sha512Checksummer implements Checksummer {
+public class Sha512Hasher implements Hasher {
 
 	@Override
 	public boolean matches(
@@ -12,7 +12,7 @@ public class Sha512Checksummer implements Checksummer {
 	}
 
 	@Override
-	public String checksum(
+	public String hash(
 		byte[] data) {
 		return DigestUtils.sha512Hex(data);
 	}

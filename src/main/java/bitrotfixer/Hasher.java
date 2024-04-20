@@ -1,8 +1,8 @@
 package bitrotfixer;
 
-public interface Checksummer {
+public interface Hasher {
 
 	boolean matches(String algorithm);
 
-	String checksum(byte[] data);
+	String hash(byte[] data);
 }

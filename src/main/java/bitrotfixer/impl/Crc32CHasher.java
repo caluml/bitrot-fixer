@@ -1,10 +1,10 @@
 package bitrotfixer.impl;
 
-import bitrotfixer.Checksummer;
+import bitrotfixer.Hasher;
 
 import java.util.zip.CRC32C;
 
-public class Crc32CChecksummer implements Checksummer {
+public class Crc32CHasher implements Hasher {
 
 	@Override
 	public boolean matches(
@@ -13,7 +13,7 @@ public class Crc32CChecksummer implements Checksummer {
 	}
 
 	@Override
-	public String checksum(
+	public String hash(
 		byte[] data) {
 		CRC32C crc32c = new CRC32C();
 		crc32c.update(data);
